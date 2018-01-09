@@ -1,0 +1,45 @@
+{
+    "name": "lappuse/addon",
+    "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "lappuse": {
+            "addons": {
+                "extensions": [
+                    "Lappuse\\Module\\AddonExtension",
+                    "Lappuse\\Theme\\AddonExtension"
+                ]
+            }
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan clear-compiled"
+        ],
+		"pre-install-cmd": [
+			"Lappuse\\Addon\\Composer\\Scripts::preInstallCmd"
+		],
+        "post-autoload-dump": [
+            "Lappuse\\Addon\\Composer\\Scripts::postAutoloadDump",
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ],
+        "post-update-cmd": "Lappuse\\Addon\\Composer\\Scripts::preUpdateCmd",
+		"pre-package-install": [
+			"Lappuse\\Addon\\Composer\\Scripts::prePackageInstall"
+		]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

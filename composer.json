@@ -1,7 +1,7 @@
 {
     "name": "lappuse/addon",
     "description": "",
-    "keywords": [],
+    "keywords": ["modules"],
     "license": "MIT",
     "type": "library",
     "require": {
